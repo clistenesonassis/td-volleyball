@@ -7,6 +7,12 @@ const routes: Routes = [
     loadChildren: async () =>
       (await import('./feature/home/home.module')).HomeModule,
   },
+  {
+    path: 'register',
+    loadChildren: async () =>
+      (await import('./feature/register/register.module')).RegisterModule,
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

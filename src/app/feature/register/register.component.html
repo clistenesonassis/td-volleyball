@@ -1,0 +1,123 @@
+<div class="register app-container">
+  <h1>Cadastre-se</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="legacy">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" maxlength="11" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Data de nascimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Genero</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="masculino">Masculino</mat-option>
+        <mat-option value="feminino">Feminino</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state.id">{{
+          state.nome
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Cidade</mat-label>
+      <mat-select formControlName="city" [disabled]="!form.get('state')?.value">
+        <mat-option *ngFor="let city of cities" [value]="city.nome">{{
+          city.nome
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Tempo de prática (em anos)</mat-label>
+      <input matInput type="number" formControlName="practiceTime" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Quantidade de treino por semana (em dias)</mat-label>
+      <input matInput type="number" formControlName="amountTraining" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Tempo de treinamento por semana (em minutos)</mat-label>
+      <input matInput type="number" formControlName="trainingTime" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Perfil competitivo</mat-label>
+      <mat-select formControlName="competitiveProfile">
+        <mat-option value="Atleta Profissional">Atleta Profissional</mat-option>
+        <mat-option value="Atleta sub-21">Atleta sub-21</mat-option>
+        <mat-option value="Atleta sub-19">Atleta sub-19</mat-option>
+        <mat-option value="Atleta sub-15">Atleta sub-15</mat-option>
+        <mat-option value="Ex-atleta profissional com prática recreaciona"
+          >Ex-atleta profissional com prática recreaciona</mat-option
+        >
+        <mat-option value="Ex-atleta de base com prática recreacional ou não"
+          >Ex-atleta de base com prática recreacional ou não</mat-option
+        >
+        <mat-option value="Atleta recreacional (nunca jogou competitivamente)"
+          >Atleta recreacional (nunca jogou competitivamente)</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Nível competitivo</mat-label>
+      <mat-select formControlName="competitiveLevel">
+        <mat-option
+          value="Apenas Circuito Regional (Campeonato Estadual e Regional)"
+          >Apenas Circuito Regional (Campeonato Estadual e Regional)</mat-option
+        >
+        <mat-option
+          value="Circuito Escolar (competições nacionais organizadas pela CBDE e/ou Fase Final dos Jogos Escolares do COB)"
+          >Circuito Escolar (competições nacionais organizadas pela CBDE e/ou
+          Fase Final dos Jogos Escolares do COB)</mat-option
+        >
+        <mat-option
+          value="Circuito Nacional de base (qualquer competição CBV de base em que tenha participado da fase principal)"
+          >Circuito Nacional de base (qualquer competição CBV de base em que
+          tenha participado da fase principal)</mat-option
+        >
+        <mat-option
+          value="Circuito Nacional profissional (qualquer competição CBV de base em que tenha participado da fase principal)"
+          >Circuito Nacional profissional (qualquer competição CBV de base em
+          que tenha participado da fase principal)</mat-option
+        >
+        <mat-option value="Circuito Mundial">Circuito Mundial</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Jogos olímpicos</mat-label>
+      <mat-select formControlName="olympicGames">
+        <mat-option value="Sim">Sim</mat-option>
+        <mat-option value="Não">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Cadastrar</button>
+  </form>
+</div>

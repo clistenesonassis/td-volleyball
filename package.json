@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start:local": "concurrently \"ng serve\" \"nodemon ./src/tools/mocks/server.js\" -k ",
+    "start:local:network": "concurrently \"ng serve --host 192.168.0.250\" \"nodemon ./src/tools/mocks/server.js\" -k ",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -11,13 +13,19 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^14.2.4",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
     "@angular/forms": "^14.0.0",
+    "@angular/material": "^14.2.4",
+    "@angular/material-moment-adapter": "^14.2.6",
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@types/angular-material": "^1.1.73",
+    "@types/moment": "^2.13.0",
+    "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -27,12 +35,15 @@
     "@angular/cli": "~14.0.4",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
+    "concurrently": "^7.5.0",
     "jasmine-core": "~4.1.0",
+    "json-server": "^0.17.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "nodemon": "^2.0.20",
     "typescript": "~4.7.2"
   }
 }

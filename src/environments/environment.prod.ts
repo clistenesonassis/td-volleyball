@@ -1,3 +1,9 @@
+import { environment as environmentBase } from './environment.base';
+
 export const environment = {
-  production: true
+  ...environmentBase,
+  production: true,
+  bffUrl: {
+    ibgeLocality: 'https://servicodados.ibge.gov.br/api/v1/localidades',
+  },
 };
