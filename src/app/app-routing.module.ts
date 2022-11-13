@@ -12,6 +12,12 @@ const routes: Routes = [
     loadChildren: async () =>
       (await import('./feature/register/register.module')).RegisterModule,
   },
+  {
+    path: 'instructions',
+    loadChildren: async () =>
+      (await import('./feature/instructions/instructions.module'))
+        .InstructionsModule,
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

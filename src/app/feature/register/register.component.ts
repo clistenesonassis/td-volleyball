@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import {
   GetBrazilStatesService,
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnDestroy {
 
   constructor(
     private getBrazilStates: GetBrazilStatesService,
-    private getCitiesBrazilByStateService: GetCitiesBrazilByStateService
+    private getCitiesBrazilByStateService: GetCitiesBrazilByStateService,
+    private router: Router
   ) {
     this.getBrazilStates.response.subscribe((res) => (this.states = res));
 
@@ -63,5 +65,6 @@ export class RegisterComponent implements OnDestroy {
   onSubmit() {
     console.log('>> Submiting...');
     console.log(this.form.getRawValue());
+    this.router.navigateByUrl('/instructions');
   }
 }
